@@ -140,3 +140,6 @@ venv.bak/
 bin
 packages
 debug/
+
+# Cython-generated files
+msanomalydetector/*.C
