@@ -30,7 +30,6 @@ setup(
     version=__version__,
     setup_requires=['Cython>=0.29.2', 'numpy>=1.18.1'],
     install_requires=install_requires,
-    requires=['Cython', 'numpy', 'pandas'],
     python_requires='>=3.6.0',
     package_data={'': ['*.txt']}
 )
