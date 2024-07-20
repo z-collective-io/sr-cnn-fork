@@ -17,7 +17,10 @@ cmdclass = {'build_ext': build_ext}
 install_requires = [
     'Cython>=0.29.2',
     'numpy>=1.18.1',
-    'pandas>=0.25.3'
+    'pandas>=0.25.3',
+    'torch',
+    'tqdm',
+    'torchvision'
 ]
 
 setup(
