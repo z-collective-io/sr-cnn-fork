@@ -20,7 +20,8 @@ install_requires = [
     'pandas>=0.25.3',
     'torch',
     'tqdm',
-    'torchvision'
+    'torchvision',
+    'scikit-learn'
 ]
 
 setup(
