@@ -111,7 +111,7 @@ if __name__ == '__main__':
 
     model_path = root + '/' + args.model_path + '/srcnn_retry' + str(epoch) + '_' + str(window) + '.bin'
     srcnn_model = Anomaly(window)
-    net = load_model(srcnn_model, model_path).cuda()
+    net = load_model(srcnn_model, model_path).cpu()
     files = get_path(data_source)
     total_time, results, savedscore = get_score(data_source, files, args.thres, args.missing_option)
     print('\n***********************************************')

@@ -63,7 +63,7 @@ if __name__ == '__main__':
         data, window = auto(args.epoch)
     else:
         data, window = args.data, args.window
-    torch.cuda.manual_seed(args.seed)
+    # torch.cpu.manual_seed(args.seed)
     np.random.seed(args.seed)
     models = {
         'sr_cnn': sr_cnn,

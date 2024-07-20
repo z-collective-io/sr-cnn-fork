@@ -86,7 +86,7 @@ def sr_cnn(data_path, model_path, win_size, lr, epochs, batch, num_worker, load_
             param['lr'] = cur_lr
 
     def Var(x):
-        return Variable(x.cuda())
+        return Variable(x.cpu())
 
     def loss_function(x, lb):
         l2_reg = 0.
@@ -95,7 +95,7 @@ def sr_cnn(data_path, model_path, win_size, lr, epochs, batch, num_worker, load_
             l2_reg = l2_reg + W.norm(2)
         kpiweight = torch.ones(lb.shape)
         kpiweight[lb == 1] = win_size // 100
-        kpiweight = kpiweight.cuda()
+        kpiweight = kpiweight.cpu()
         BCE = F.binary_cross_entropy(x, lb, weight=kpiweight, reduction='sum')
         return l2_reg * l2_weight + BCE
 
@@ -156,8 +156,8 @@ def sr_cnn(data_path, model_path, win_size, lr, epochs, batch, num_worker, load_
                            loss1.item() / len(inputs)))
 
     model = Anomaly(win_size)
-    net = model.cuda()
-    gpu_num = torch.cuda.device_count()
+    net = model.cpu()
+    gpu_num = torch.cpu.device_count()
     net = torch.nn.DataParallel(net, list(range(gpu_num)))
     print(net)
     base_lr = lr
@@ -265,7 +265,7 @@ class gen_set(Dataset):
 
 def sr_cnn_eval(timestamp, value, label, window, net, ms_optioin, threshold=0.95, back_k=0, backaddnum=5, step=1):
     def Var(x):
-        return Variable(x.cuda())
+        return Variable(x.cpu())
 
     def modelwork(x, net):
         with torch.no_grad():
